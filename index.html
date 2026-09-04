@@ -8,7 +8,7 @@
 <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600&family=Crimson+Text:ital,wght@0,400;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@200;300;400;500;600&family=Crimson+Text:ital,wght@0,400;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/global.css">
 <style>
   .video-bg-container{ position:absolute; top:0; left:0; width:100%; height:100vh; z-index:0; overflow:hidden; pointer-events:none; }
@@ -32,6 +32,8 @@
   .video-pane video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none; }
   .video-overlay{ position:absolute; inset:0;
     background:linear-gradient(180deg, rgba(246,242,236,.15) 0%, rgba(246,242,236,.65) 55%, var(--ivory) 100%); }
+  .hero-scrim{ position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(15,14,13,.55) 0%, rgba(15,14,13,.22) 45%, rgba(15,14,13,0) 100%); }
 </style>
 </head>
 <body class="relative">
@@ -48,21 +50,22 @@
   </div>
   <div class="video-bg" id="videoLayer"></div>
   <div class="video-overlay"></div>
+  <div class="hero-scrim"></div>
 </div>
 
 <header class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative z-10">
-  <div class="max-w-4xl scroll-reveal visible">
-    <span class="text-[#9c8b77] font-semibold tracking-[0.4em] uppercase text-xs mb-8 block">Modest Luxury, Redefined</span>
-    <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-light leading-tight mb-10 tracking-tight">
-      Timeless Craft <br>
-      <span class="italic font-classic">Modern Grace</span>
+  <div class="max-w-6xl scroll-reveal visible">
+    <span class="text-white/70 font-light tracking-[0.5em] uppercase text-xs mb-12 block">Modest Luxury, Redefined</span>
+    <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-serif font-extralight uppercase leading-[1.02] tracking-[0.04em] mb-12 text-white">
+      Timeless Craft<br>
+      <span class="font-serif font-extralight">Modern Grace</span>
     </h1>
-    <p class="max-w-xl mx-auto text-lg text-gray-500 leading-relaxed mb-12 font-light">
+    <p class="max-w-xl mx-auto text-lg text-white/80 leading-relaxed mb-14 font-light">
       Abayas, evening gowns and hijabs cut from fabric you can feel through the screen — each piece finished by hand, made to be worn, not just seen.
     </p>
     <div class="flex flex-col sm:flex-row justify-center gap-6">
-      <a href="shop.html" class="btn-champagne solid px-12 py-5 text-[11px] tracking-[0.3em] uppercase">Shop the Collection</a>
-      <a href="about.html" class="btn-champagne px-12 py-5 text-[11px] tracking-[0.3em] uppercase">Our Story</a>
+      <a href="shop.html" class="px-12 py-5 text-[11px] tracking-[0.3em] uppercase border border-white text-white transition-colors hover:bg-white hover:text-[#1f1d1c]">Shop the Collection</a>
+      <a href="about.html" class="px-12 py-5 text-[11px] tracking-[0.3em] uppercase border border-white/60 text-white/90 transition-colors hover:bg-white hover:text-[#1f1d1c]">Our Story</a>
     </div>
   </div>
 </header>
