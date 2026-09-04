@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop — ROSEDRESS</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600&family=Crimson+Text:ital,wght@0,400;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/global.css">
+</head>
+<body class="relative">
+
+<div id="header-holder"></div>
+
+<section class="pt-40 pb-16 px-6 md:px-16 bg-[#f6f2ec]">
+  <div class="max-w-7xl mx-auto">
+    <p class="eyebrow mb-4">The Collection</p>
+    <h1 class="text-4xl md:text-6xl font-serif font-light leading-tight">Shop Rosedress</h1>
+  </div>
+</section>
+
+<section id="shop" class="pb-24 px-6 md:px-16">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+      <!-- filters -->
+      <aside class="lg:w-64 shrink-0">
+        <div class="sticky top-28 space-y-8">
+          <div>
+            <h3 class="text-[11px] tracking-[0.3em] uppercase font-bold mb-4">Categories</h3>
+            <div class="flex flex-wrap lg:flex-col gap-2" id="catFilters">
+              <button data-cat="all" class="filter-btn px-4 py-2 text-[11px] tracking-widest uppercase border border-[#1f1d1c] transition-all">All</button>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-[11px] tracking-[0.3em] uppercase font-bold mb-4">Sort</h3>
+            <select id="sortSelect" class="w-full bg-white border border-[#9c8b77]/20 px-4 py-3 text-sm font-light focus:outline-none focus:border-[#c9a876]">
+              <option value="featured">Featured</option>
+              <option value="low">Price: Low to High</option>
+              <option value="high">Price: High to Low</option>
+              <option value="name">Name: A to Z</option>
+            </select>
+          </div>
+          <div>
+            <h3 class="text-[11px] tracking-[0.3em] uppercase font-bold mb-4">Search</h3>
+            <div class="relative">
+              <input id="searchInput" type="text" placeholder="Search pieces..." class="w-full bg-white border border-[#9c8b77]/20 px-4 py-3 pr-10 text-sm font-light focus:outline-none focus:border-[#c9a876]">
+              <iconify-icon icon="lucide:search" class="absolute right-3 top-1/2 -translate-y-1/2 text-[#9c8b77]"></iconify-icon>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- grid -->
+      <div class="flex-1">
+        <div class="text-sm text-[#9c8b77] font-light mb-6"><span id="resultCount">0</span> pieces</div>
+        <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8"></div>
+        <div id="emptyState" class="hidden text-center py-24 text-gray-400 font-light italic font-classic">No pieces match your search.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer"></footer>
+
+<script src="js/products.js"></script>
+<script src="js/layout.js"></script>
+<script>
+(function(){
+  // build category filters
+  var catBox = document.getElementById('catFilters');
+  var allBtn = catBox.querySelector('[data-cat="all"]');
+  ROSEDRESS.CATEGORIES.forEach(function(c){
+    var b = document.createElement('button');
+    b.setAttribute('data-cat', c.id);
+    b.textContent = c.name.toUpperCase();
+    b.className = 'filter-btn px-4 py-2 text-[11px] tracking-widest uppercase border border-[#1f1d1c]/30 transition-all';
+    catBox.appendChild(b);
+  });
+
+  var state = { cat: new URLSearchParams(location.search).get('cat') || 'all', sort:'featured', query:'' };
+  var grid = document.getElementById('productGrid');
+
+  function applyFilters(){
+    catBox.querySelectorAll('.filter-btn').forEach(function(b){
+      var on = (state.cat==='all') ? b.dataset.cat==='all' : b.dataset.cat===state.cat;
+      b.classList.toggle('bg-[#1f1d1c]', on);
+      b.classList.toggle('text-white', on);
+      b.classList.toggle('border-[#1f1d1c]', on);
+      b.classList.toggle('border-[#1f1d1c]/30', !on);
+    });
+
+    var items = ROSEDRESS.PRODUCTS.filter(function(p){
+      var catOk = state.cat==='all' || p.cat===state.cat;
+      var q = state.query.toLowerCase();
+      var queryOk = !q || p.name.toLowerCase().indexOf(q)>-1;
+      return catOk && queryOk;
+    });
+
+    if(state.sort==='low') items.sort(function(a,b){ return a.price-b.price; });
+    else if(state.sort==='high') items.sort(function(a,b){ return b.price-a.price; });
+    else if(state.sort==='name') items.sort(function(a,b){ return a.name.localeCompare(b.name); });
+
+    render(items);
+  }
+
+  function render(items){
+    grid.innerHTML='';
+    document.getElementById('resultCount').textContent = items.length;
+    document.getElementById('emptyState').classList.toggle('hidden', items.length>0);
+    items.forEach(function(p){
+      var g = ['#e2cfae','#b08f63'];
+      var card = document.createElement('div');
+      card.className='product-card scroll-reveal';
+      var tag = p.tag ? '<span class="absolute top-3 left-3 z-10 text-[9px] tracking-widest uppercase font-bold px-3 py-1.5 text-white bg-[#1f1d1c]/80 backdrop-blur">New</span>' : '';
+      card.innerHTML =
+        tag+
+        '<a href="product.html?id='+p.id+'" class="block">'+
+          '<div class="aspect-[3/4] overflow-hidden mb-5 shadow-md rounded-sm relative group" style="background:linear-gradient(160deg,'+g[0]+','+g[1]+')">'+
+            '<img src="'+ROSEDRESS.img(p)+'" alt="'+p.name+'" loading="lazy" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">'+
+            '<div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">'+
+              '<span class="bg-white/90 backdrop-blur px-5 py-3 text-[10px] tracking-widest uppercase font-bold text-[#1f1d1c] shadow-xl">View</span>'+
+            '</div>'+
+          '</div>'+
+          '<div class="text-center">'+
+            '<h4 class="text-sm tracking-widest uppercase font-semibold mb-1 group-hover:text-[#c9a876] transition-colors">'+p.name+'</h4>'+
+            '<span class="text-xs text-[#9c8b77] font-light">'+ROSEDRESS.money(p.price)+'</span>'+
+          '</div>'+
+        '</a>';
+      grid.appendChild(card);
+    });
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } }); },{threshold:.1});
+      grid.querySelectorAll('.scroll-reveal').forEach(function(el){ io.observe(el); });
+    } else { grid.querySelectorAll('.scroll-reveal').forEach(function(el){ el.classList.add('visible'); }); }
+  }
+
+  catBox.addEventListener('click', function(e){
+    var b = e.target.closest('.filter-btn');
+    if(!b) return;
+    state.cat = b.dataset.cat; applyFilters();
+  });
+  document.getElementById('sortSelect').addEventListener('change', function(e){ state.sort=e.target.value; applyFilters(); });
+  var st;
+  document.getElementById('searchInput').addEventListener('input', function(e){
+    clearTimeout(st); st=setTimeout(function(){ state.query=e.target.value; applyFilters(); },200);
+  });
+
+  applyFilters();
+})();
+</script>
+</body>
+</html>

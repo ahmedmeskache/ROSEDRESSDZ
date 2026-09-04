@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product — ROSEDRESS</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600&family=Crimson+Text:ital,wght@0,400;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/global.css">
+</head>
+<body class="relative">
+
+<div id="header-holder"></div>
+
+<section id="product" class="pt-32 pb-24 px-6 md:px-16"></section>
+
+<section id="related" class="py-20 px-6 md:px-16 bg-[#efe8dc]">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-serif font-light mb-10 text-center">You May Also Like</h2>
+    <div id="relatedGrid" class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"></div>
+  </div>
+</section>
+
+<footer id="site-footer"></footer>
+
+<script src="js/products.js"></script>
+<script src="js/layout.js"></script>
+<script>
+(function(){
+  var params = new URLSearchParams(location.search);
+  var id = params.get('id');
+  var p = ROSEDRESS.getProduct(id) || ROSEDRESS.PRODUCTS[0];
+  var sizes = ['XS','S','M','L','XL'];
+  document.title = p.name + ' — ROSEDRESS';
+
+  var section = document.getElementById('product');
+  section.innerHTML =
+    '<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">'+
+      '<div class="editorial-img">'+
+        '<img src="'+ROSEDRESS.img(p)+'" alt="'+p.name+'" class="w-full aspect-[3/4] object-cover shadow-lg rounded-sm">'+
+      '</div>'+
+      '<div class="lg:pt-8">'+
+        '<p class="eyebrow mb-4">'+(ROSEDRESS.getCat(p.cat) ? ROSEDRESS.getCat(p.cat).name : '')+'</p>'+
+        '<h1 class="text-3xl md:text-5xl font-serif font-light mb-6">'+p.name+'</h1>'+
+        '<div class="text-xl text-[#9c8b77] font-light mb-8">'+ROSEDRESS.money(p.price)+'</div>'+
+        '<p class="text-gray-500 leading-loose font-light mb-8">A refined piece from the ROSEDRESS. Crafted from quality fabrics and finished by hand. <span class="italic font-classic">Full product description and photography to follow.</span></p>'+
+        '<div class="mb-8">'+
+          '<h3 class="text-[11px] tracking-[0.3em] uppercase font-bold mb-3">Size</h3>'+
+          '<div class="flex gap-2 flex-wrap" id="sizeRow"></div>'+
+        '</div>'+
+        '<div class="flex flex-col sm:flex-row gap-4 mb-10">'+
+          '<button id="addToCart" class="btn-champagne solid px-10 py-4 text-[11px] tracking-[0.3em] uppercase">Add to Bag</button>'+
+          '<a href="cart.html" class="btn-champagne px-10 py-4 text-[11px] tracking-[0.3em] uppercase text-center">View Bag</a>'+
+        '</div>'+
+        '<div id="addedNote" class="hidden text-sm text-[#c9a876] italic font-classic mb-6">Added to your bag.</div>'+
+        '<div class="border-t border-[#9c8b77]/15 pt-6 space-y-3 text-[13px] text-gray-500 font-light">'+
+          '<p><span class="uppercase tracking-widest text-[#9c8b77] mr-3">Details</span> Hand-finished ROSEDRESS craftsmanship.</p>'+
+          '<p><span class="uppercase tracking-widest text-[#9c8b77] mr-3">Delivery</span> Demo — shipping info to be confirmed.</p>'+
+          '<p><span class="uppercase tracking-widest text-[#9c8b77] mr-3">Boutique</span> Annaba, Algeria</p>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+
+  var sizeRow = document.getElementById('sizeRow');
+  var selectedSize = '';
+  sizes.forEach(function(s){
+    var b = document.createElement('button');
+    b.textContent = s;
+    b.className = 'size-btn w-12 h-12 text-[12px] tracking-widest uppercase border border-[#1f1d1c]/30 transition-all';
+    b.addEventListener('click', function(){
+      sizeRow.querySelectorAll('.size-btn').forEach(function(x){ x.classList.remove('bg-[#1f1d1c]','text-white'); });
+      b.classList.add('bg-[#1f1d1c]','text-white');
+      selectedSize = s;
+    });
+    sizeRow.appendChild(b);
+  });
+
+  document.getElementById('addToCart').addEventListener('click', function(){
+    ROSEDRESS.addToCart(p.id, selectedSize);
+    var n = document.getElementById('addedNote');
+    n.classList.remove('hidden');
+    setTimeout(function(){ n.classList.add('hidden'); },2500);
+  });
+
+  // related
+  var rel = ROSEDRESS.PRODUCTS.filter(function(x){ return x.id!==p.id && x.cat===p.cat; });
+  if(rel.length<4){ rel = rel.concat(ROSEDRESS.PRODUCTS.filter(function(x){ return x.id!==p.id && rel.indexOf(x)<0; })); }
+  rel = rel.slice(0,4);
+  var rg = document.getElementById('relatedGrid');
+  rel.forEach(function(r){
+    rg.innerHTML +=
+      '<a href="product.html?id='+r.id+'" class="product-card scroll-reveal block">'+
+        '<div class="aspect-[3/4] overflow-hidden mb-4 shadow-md rounded-sm relative group" style="background:linear-gradient(160deg,#e2cfae,#b08f63)">'+
+          '<img src="'+ROSEDRESS.img(r)+'" alt="'+r.name+'" loading="lazy" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">'+
+        '</div>'+
+        '<div class="text-center">'+
+          '<h4 class="text-sm tracking-widest uppercase font-semibold mb-1">'+r.name+'</h4>'+
+          '<span class="text-xs text-[#9c8b77] font-light">'+ROSEDRESS.money(r.price)+'</span>'+
+        '</div>'+
+      '</a>';
+  });
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } }); },{threshold:.1});
+    rg.querySelectorAll('.scroll-reveal').forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>

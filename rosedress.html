@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROSEDRESS — Timeless Craft, Modern Grace</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600&family=Crimson+Text:ital,wght@0,400;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#f6f2ec;
+    --sage:#b7a184;
+    --champagne:#c9a876;
+    --dark:#1f1d1c;
+    --beige:#e7ddd0;
+    --taupe:#a69a8c;
+  }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--ivory); color:var(--dark);
+    font-family:'Plus Jakarta Sans',sans-serif; font-weight:300;
+  }
+  .font-serif{ font-family:'Playfair Display',serif; }
+  .font-classic{ font-family:'Crimson Text',serif; }
+  ::selection{ background:var(--champagne); color:#fff; }
+
+  .scroll-reveal{ opacity:0; transform:translateY(30px); transition:opacity 1.2s ease, transform 1.2s ease; }
+  .scroll-reveal.visible{ opacity:1; transform:translateY(0); }
+  .reveal-left{ opacity:0; transform:translateX(-40px); transition:opacity 1.2s ease, transform 1.2s ease; }
+  .reveal-left.visible{ opacity:1; transform:translateX(0); }
+  .reveal-right{ opacity:0; transform:translateX(40px); transition:opacity 1.2s ease, transform 1.2s ease; }
+  .reveal-right.visible{ opacity:1; transform:translateX(0); }
+
+  .video-bg-container{
+    position:absolute; top:0; left:0; width:100%; height:100vh; z-index:0; overflow:hidden; pointer-events:none;
+  }
+  .video-bg{
+    position:absolute; inset:-10%; will-change:transform;
+    background:
+      radial-gradient(90% 70% at 15% 10%, rgba(201,168,118,.5) 0%, transparent 55%),
+      radial-gradient(90% 70% at 85% 30%, rgba(156,139,119,.4) 0%, transparent 55%),
+      radial-gradient(100% 80% at 50% 100%, rgba(201,168,118,.35) 0%, transparent 60%),
+      linear-gradient(160deg,#efe7db 0%, #e9dfcf 50%, #dfd1b8 100%);
+    background-size:200% 200%, 200% 200%, 200% 200%, 100% 100%;
+    animation:texdrift 26s ease-in-out infinite alternate;
+  }
+  .video-bg::after{
+    content:''; position:absolute; inset:0;
+    background:repeating-linear-gradient(105deg, rgba(255,255,255,.15) 0 1.5px, transparent 1.5px 9px);
+    mix-blend-mode:overlay;
+  }
+  @keyframes texdrift{
+    0%{ background-position:10% 20%, 90% 30%, 50% 100%, 0 0; }
+    100%{ background-position:55% 60%, 40% 70%, 60% 40%, 0 0; }
+  }
+  .video-panes{
+    position:absolute; inset:0; display:flex;
+  }
+  .video-pane{
+    flex:1; position:relative; overflow:hidden; min-width:0;
+  }
+  .video-pane video{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; pointer-events:none;
+  }
+  .video-gutter{
+    width:2px; background:var(--champagne); opacity:.7;
+  }
+  .video-bg{
+    opacity:0.4;
+  }
+  .video-overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(246,242,236,.15) 0%, rgba(246,242,236,.65) 55%, var(--ivory) 100%);
+  }
+
+  .btn-champagne{ border:1px solid var(--dark); border-radius:999px; position:relative; overflow:hidden; }
+  .btn-champagne::after{
+    content:''; position:absolute; top:0; left:-120%; width:100%; height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,.35), transparent);
+    transition:left .7s ease;
+  }
+  .btn-champagne:hover::after{ left:120%; }
+
+  .product-card{ transition:transform .5s cubic-bezier(.2,.7,.3,1), box-shadow .5s ease; will-change:transform; }
+  .product-card:hover{ transform:translateY(-10px) scale(1.02); box-shadow:0 24px 48px -18px rgba(31,29,28,.25); }
+  .product-card .texture-zoom{ transition:transform 1s cubic-bezier(.2,.7,.3,1); }
+  .product-card:hover .texture-zoom{ transform:scale(1.12) rotate(.5deg); }
+  .product-card .pc-img{ transition:transform .5s ease, opacity .4s ease; }
+  .product-card:hover .pc-img{ transform:translateY(-4px); }
+
+  .editorial-img{ overflow:hidden; }
+  .editorial-img img{ transition:transform 1.4s cubic-bezier(.2,.7,.3,1); }
+  .editorial-img:hover img{ transform:scale(1.06); }
+
+  .nav-link{ position:relative; }
+  .nav-link::after{
+    content:''; position:absolute; left:0; bottom:-4px; height:1px; width:0;
+    background:var(--champagne); transition:width .4s ease;
+  }
+  .nav-link:hover::after{ width:100%; }
+
+  .nav-fixed{ transition:box-shadow .4s ease, background .4s ease; }
+  .nav-fixed.scrolled{ box-shadow:0 10px 30px -18px rgba(31,29,28,.4); }
+
+  .float-tag{ animation:floaty 5s ease-in-out infinite; }
+  @keyframes floaty{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-10px); }
+  }
+  #mobileMenu{ transition:opacity .3s ease, visibility .3s ease; }
+</style>
+</head>
+<body class="relative">
+
+<div class="video-bg-container" id="videoBg">
+  <div class="video-panes">
+    <div class="video-pane">
+      <video autoplay muted loop playsinline>
+        <source src="https://videos.pexels.com/video-files/6482850/6482850-hd_720_1280_25fps.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="video-gutter"></div>
+    <div class="video-pane">
+      <video autoplay muted loop playsinline>
+        <source src="https://videos.pexels.com/video-files/10209556/10209556-hd_1366_720_25fps.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  <div class="video-bg" id="videoLayer"></div>
+  <div class="video-overlay"></div>
+</div>
+
+<nav class="fixed top-0 w-full z-50 nav-fixed h-24 flex items-center justify-between px-6 md:px-16" style="background: rgba(246, 242, 236, 0.85); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(156, 139, 119, 0.25);">
+  <div class="hidden md:flex gap-10 text-[11px] tracking-[0.2em] font-medium">
+    <a href="#new-arrivals" class="nav-link hover:text-[#c9a876] transition-colors">NEW ARRIVALS</a>
+    <a href="#collections" class="nav-link hover:text-[#c9a876] transition-colors">COLLECTIONS</a>
+    <a href="#signature" class="nav-link hover:text-[#c9a876] transition-colors">SIGNATURE</a>
+  </div>
+  <div class="absolute left-1/2 -translate-x-1/2 flex flex-col items-center leading-none">
+    <a href="#" class="block" aria-label="Rosedress">
+      <img src="logo.svg" alt="Rosedress" class="h-12 md:h-14 w-auto object-contain">
+    </a>
+    <span class="hidden md:block text-[10px] tracking-[0.5em] text-[#9c8b77] mt-1">ROSEDRESS</span>
+  </div>
+  <div class="flex items-center gap-6 md:gap-8">
+    <a href="#visit" class="hidden lg:inline-block hover:text-[#c9a876] transition-colors text-[11px] tracking-[0.2em] font-medium">VISIT ROSEDRESS</a>
+    <button class="hover:text-[#c9a876] transition-colors text-xl" aria-label="Search">
+      <iconify-icon icon="lucide:search"></iconify-icon>
+    </button>
+    <button class="hover:text-[#c9a876] transition-colors text-xl relative" aria-label="Cart">
+      <iconify-icon icon="lucide:shopping-bag"></iconify-icon>
+      <span class="absolute -top-1 -right-2 text-[10px] bg-[#c9a876] text-white w-4 h-4 rounded-full flex items-center justify-center">0</span>
+    </button>
+    <button class="text-2xl md:hidden" id="menuToggle" aria-label="Menu">
+      <iconify-icon icon="lucide:menu"></iconify-icon>
+    </button>
+  </div>
+</nav>
+
+<div id="mobileMenu" class="fixed inset-0 z-40 bg-[#f6f2ec] flex flex-col items-center justify-center gap-8 opacity-0 invisible">
+  <a href="#new-arrivals" class="text-2xl font-serif">New Arrivals</a>
+  <a href="#collections" class="text-2xl font-serif">Collections</a>
+  <a href="#edit" class="text-2xl font-serif">Rosedress Edit</a>
+  <a href="#signature" class="text-2xl font-serif">Signature</a>
+  <a href="#visit" class="text-2xl font-serif">Visit Rosedress</a>
+</div>
+
+<header class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative z-10">
+  <div class="max-w-4xl scroll-reveal visible">
+    <span class="text-[#9c8b77] font-semibold tracking-[0.4em] uppercase text-xs mb-8 block">Modest Luxury, Redefined</span>
+    <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-light leading-tight mb-10 tracking-tight">
+      Timeless Craft <br>
+      <span class="italic font-classic">Modern Grace</span>
+    </h1>
+    <p class="max-w-xl mx-auto text-lg text-gray-500 leading-relaxed mb-12 font-light">
+      Abayas, evening gowns and hijabs cut from fabric you can feel through the screen — each piece finished by hand, made to be worn, not just seen.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-6">
+      <a href="#new-arrivals" class="btn-champagne px-12 py-5 text-[11px] tracking-[0.3em] uppercase bg-[#1f1d1c] text-white hover:bg-transparent hover:text-[#1f1d1c] transition-all">Explore the Collection</a>
+      <a href="#visit" class="btn-champagne px-12 py-5 text-[11px] tracking-[0.3em] uppercase hover:bg-[#1f1d1c] hover:text-white transition-all">Visit Rosedress</a>
+    </div>
+  </div>
+</header>
+
+<section id="new-arrivals" class="py-32 md:py-40 px-6 md:px-16 relative z-10">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 scroll-reveal">
+      <div>
+        <span class="text-[#9c8b77] font-semibold tracking-[0.4em] uppercase text-xs mb-6 block">01 — New In</span>
+        <h2 class="text-4xl md:text-6xl font-serif font-light leading-tight">New Arrivals</h2>
+      </div>
+      <p class="mt-6 md:mt-0 max-w-md text-sm text-gray-500 leading-relaxed font-light">
+        The latest pieces to enter the atelier. Fresh silhouettes, quiet details — photographed here as they arrive.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+      <div class="product-card scroll-reveal">
+        <a href="#collections" class="block">
+          <div class="aspect-[3/4] overflow-hidden mb-6 md:mb-8 shadow-md rounded-sm relative group editorial-img">
+            <img src="https://images.pexels.com/photos/18116163/pexels-photo-18116163.jpeg?auto=compress&cs=tinysrgb&w=900" alt="ROSEDRESS new arrival" loading="lazy" class="w-full h-full object-cover editorial-img-img">
+            <span class="absolute top-3 left-3 z-10 text-[9px] tracking-widest uppercase font-bold px-3 py-1.5 text-white bg-[#1f1d1c]/80 backdrop-blur">New</span>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-white/90 backdrop-blur px-6 md:px-8 py-3 text-[10px] tracking-widest uppercase font-bold text-[#1f1d1c] shadow-xl">Shop Now</span>
+            </div>
+          </div>
+          <div class="text-center px-1">
+            <h4 class="text-sm md:text-base tracking-widest uppercase font-semibold mb-2 group-hover:text-[#c9a876] transition-colors">New Arrival</h4>
+            <p class="text-xs md:text-[13px] text-[#9c8b77] font-light leading-relaxed">A newly arrived piece from ROSEDRESS — imagery to follow.</p>
+          </div>
+        </a>
+      </div>
+      <div class="product-card scroll-reveal">
+        <a href="#collections" class="block">
+          <div class="aspect-[3/4] overflow-hidden mb-6 md:mb-8 shadow-md rounded-sm relative group">
+            <div class="absolute inset-0 texture-zoom" style="background-image:radial-gradient(circle at 30% 30%, rgba(255,255,255,.28), transparent 60%), radial-gradient(circle at 70% 80%, rgba(255,255,255,.15), transparent 55%); background-color:#ece0cd;"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-white/90 backdrop-blur px-6 md:px-8 py-3 text-[10px] tracking-widest uppercase font-bold text-[#1f1d1c] shadow-xl">Shop Now</span>
+            </div>
+          </div>
+          <div class="text-center px-1">
+            <h4 class="text-sm md:text-base tracking-widest uppercase font-semibold mb-2 group-hover:text-[#c9a876] transition-colors">The Eidita</h4>
+            <p class="text-xs md:text-[13px] text-[#9c8b77] font-light leading-relaxed">A signature piece of the season — details to be revealed.</p>
+          </div>
+        </a>
+      </div>
+      <div class="product-card scroll-reveal">
+        <a href="#collections" class="block">
+          <div class="aspect-[3/4] overflow-hidden mb-6 md:mb-8 shadow-md rounded-sm relative group">
+            <div class="absolute inset-0 texture-zoom" style="background-image:radial-gradient(circle at 30% 30%, rgba(255,255,255,.28), transparent 60%), radial-gradient(circle at 70% 80%, rgba(255,255,255,.15), transparent 55%); background-color:#e4d6c0;"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-white/90 backdrop-blur px-6 md:px-8 py-3 text-[10px] tracking-widest uppercase font-bold text-[#1f1d1c] shadow-xl">Shop Now</span>
+            </div>
+          </div>
+          <div class="text-center px-1">
+            <h4 class="text-sm md:text-base tracking-widest uppercase font-semibold mb-2 group-hover:text-[#c9a876] transition-colors">Evening Edit</h4>
+            <p class="text-xs md:text-[13px] text-[#9c8b77] font-light leading-relaxed">An evening edit curated at the atelier — imagery to follow.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="collections" class="py-24 md:py-32 px-6 md:px-16 relative z-10 bg-[#efe8dc]">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-24 scroll-reveal">
+      <span class="text-[#9c8b77] font-semibold tracking-[0.4em] uppercase text-xs mb-6 block">02 — The Wardrobe</span>
+      <h2 class="text-4xl md:text-6xl font-serif font-light">Explore the Collection</h2>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8 gap-y-16 md:gap-y-20" id="productGrid"></div>
+  </div>
+</section>
+
+<section id="edit" class="py-32 md:py-40 px-6 md:px-16 relative z-10">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <div class="editorial-img reveal-left">
+      <img src="https://images.pexels.com/photos/8995843/pexels-photo-8995843.jpeg?auto=compress&cs=tinysrgb&w=900" alt="ROSEDRESS EDIT" loading="lazy" class="w-full aspect-[3/4] object-cover shadow-lg rounded-sm">
+    </div>
+    <div class="reveal-right">
+      <span class="text-[#9c8b77] font-semibold tracking-[0.4em] uppercase text-xs mb-6 block">03 — The Edit</span>
+      <h2 class="text-4xl md:text-5xl font-serif font-light leading-tight mb-8">The ROSEDRESS Edit</h2>
+      <p class="text-gray-500 leading-loose font-light mb-8 max-w-lg">
+        A curated look at how ROSEDRESS pieces come together — from the atelier floor to the way they move on you. Each edit is composed with the same care as the garments themselves.
+      </p>
+      <p class="text-sm text-[#9c8b77] font-light italic font-classic mb-10">Editorial imagery — full lookbook photography to follow.</p>
+      <a href="#collections" class="btn-champagne px-10 py-4 text-[11px] tracking-[0.3em] uppercase inline-block">Shop the Edit</a>
+    </div>
+  </div>
+</section>
+
+<section id="signature" class="py-24 md:py-32 px-6 md:px-16 relative z-10">
+  <div class="max-w-7xl mx-auto text-center scroll-reveal">
+    <span class="text-[#9c8b77] font-semibold tracking-[0.4em] uppercase text-xs mb-6 block">04 — Signature</span>
+    <h2 class="text-4xl md:text-5xl font-serif font-light mb-10">The ROSEDRESS Signature</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 max-w-5xl mx-auto text-left">
+      <div>
+        <h4 class="tracking-[0.3em] uppercase text-sm font-semibold mb-3 text-[#c9a876]">Craft</h4>
+        <p class="text-sm text-gray-500 leading-relaxed font-light">Every Rosedress piece is finished by hand, cut from fabrics meant to move with you.</p>
+      </div>
+      <div>
+        <h4 class="tracking-[0.3em] uppercase text-sm font-semibold mb-3 text-[#c9a876]">Modesty</h4>
+        <p class="text-sm text-gray-500 leading-relaxed font-light">Elegance defined by coverage — silhouettes that are confident, graceful and true to your values.</p>
+      </div>
+      <div>
+        <h4 class="tracking-[0.3em] uppercase text-sm font-semibold mb-3 text-[#c9a876]">Grace</h4>
+        <p class="text-sm text-gray-500 leading-relaxed font-light">Designed to make you feel beautiful — quiet luxury meant to be worn, not just seen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 md:py-32 px-6 md:px-16 relative z-10 bg-[#efe8dc]">
+  <div class="max-w-7xl mx-auto text-center scroll-reveal">
+    <span class="text-[#9c8b77] font-semibold tracking-[0.4em] uppercase text-xs mb-6 block">05 — Follow</span>
+    <h2 class="text-4xl md:text-5xl font-serif font-light mb-6">Stay close to the atelier</h2>
+    <p class="text-gray-500 max-w-md mx-auto mb-10 font-light">New arrivals, bespoke openings and quiet previews — follow along.</p>
+    <a href="https://www.instagram.com/rosedressdz/" target="_blank" rel="noopener" class="btn-champagne px-10 py-4 text-[11px] tracking-[0.3em] uppercase inline-flex items-center gap-3">
+      <iconify-icon icon="lucide:instagram" class="text-lg"></iconify-icon> @rosedressdz
+    </a>
+  </div>
+</section>
+
+<section id="visit" class="py-32 md:py-40 px-6 md:px-16 relative z-10">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <div class="reveal-left">
+      <span class="text-[#9c8b77] font-semibold tracking-[0.4em] uppercase text-xs mb-6 block">06 — Visit</span>
+      <h2 class="text-4xl md:text-5xl font-serif font-light leading-tight mb-8">Visit Rosedress</h2>
+      <p class="text-gray-500 leading-loose font-light mb-8 max-w-lg">
+        Step into our boutique and experience the collection in person — the feel of the fabrics, the quiet of the space, and the pieces styled for you.
+      </p>
+      <div class="text-sm text-[#9c8b77] font-light leading-loose mb-10">
+        <p>Annaba, Algeria</p>
+        <p class="italic font-classic">Precise address and opening hours to be confirmed.</p>
+      </div>
+      <a href="https://www.instagram.com/rosedressdz/" target="_blank" rel="noopener" class="btn-champagne px-10 py-4 text-[11px] tracking-[0.3em] uppercase inline-block">Get in Touch</a>
+    </div>
+    <div class="editorial-img reveal-right">
+      <img src="https://images.pexels.com/photos/18116163/pexels-photo-18116163.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Visit ROSEDRESS boutique" loading="lazy" class="w-full aspect-[3/4] object-cover shadow-lg rounded-sm">
+    </div>
+  </div>
+</section>
+
+<section class="py-24 md:py-32 px-6 md:px-12 text-center relative z-10 bg-[#1f1d1c] text-white">
+  <div class="max-w-2xl mx-auto scroll-reveal">
+    <h2 class="text-4xl md:text-5xl font-serif font-light mb-8 italic text-[#c9a876]">New in, quiet first.</h2>
+    <p class="text-[#c9a876]/80 mb-12 font-light">New arrivals, bespoke openings and quiet previews — nothing else.</p>
+    <form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto" onsubmit="event.preventDefault();">
+      <input type="email" placeholder="Email" required class="flex-1 bg-white/10 border border-white/20 px-8 py-5 text-sm font-light focus:outline-none focus:border-[#c9a876] transition-all text-white placeholder-white/50">
+      <button type="submit" class="px-10 py-5 bg-[#c9a876] text-[#1f1d1c] text-[11px] tracking-widest uppercase font-bold hover:bg-white transition-colors">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<footer class="py-24 px-6 md:px-16 bg-white border-t border-[#f6f2ec] relative z-10">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-14 md:gap-20">
+    <div class="md:col-span-2">
+      <a href="#" class="block mb-8 inline-block">
+        <img src="logo.svg" alt="Rosedress" class="h-16 md:h-24 w-auto object-contain">
+      </a>
+      <p class="text-sm text-gray-500 leading-loose max-w-sm font-light italic font-classic">Modesty and elegance, cut from the same cloth. Every Rosedress piece is designed to make you feel confident, beautiful and true to your values.</p>
+    </div>
+    <div class="space-y-6">
+      <h5 class="text-[10px] tracking-[0.4em] uppercase text-[#c9a876] font-bold">Navigate</h5>
+      <ul class="space-y-4 text-[13px] font-light">
+        <li><a href="#new-arrivals" class="hover:text-[#c9a876] transition-colors">New arrivals</a></li>
+        <li><a href="#collections" class="hover:text-[#c9a876] transition-colors">Collections</a></li>
+        <li><a href="#edit" class="hover:text-[#c9a876] transition-colors">Rosedress Edit</a></li>
+        <li><a href="#signature" class="hover:text-[#c9a876] transition-colors">Signature</a></li>
+      </ul>
+    </div>
+    <div class="space-y-6">
+      <h5 class="text-[10px] tracking-[0.4em] uppercase text-[#c9a876] font-bold">Follow</h5>
+      <ul class="space-y-4 text-[13px] font-light">
+        <li><a href="https://www.instagram.com/rosedressdz/" target="_blank" rel="noopener" class="hover:text-[#c9a876] transition-colors inline-flex items-center gap-2"><iconify-icon icon="lucide:instagram" class="text-base"></iconify-icon> @rosedressdz</a></li>
+        <li><a href="#visit" class="hover:text-[#c9a876] transition-colors">Visit Rosedress</a></li>
+        <li><a href="#visit" class="hover:text-[#c9a876] transition-colors">Contact us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-[#9c8b77]/15 flex flex-col md:flex-row justify-between gap-4 text-[11px] tracking-wide text-gray-400">
+    <span>© 2026 Rosedress — Annaba, Algeria</span>
+    <span>Powered by <span class="text-[#c9a876] font-semibold tracking-[0.3em] uppercase">VisionDz</span></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var golds = [
+    ['#e2cfae','#b08f63'], ['#d9c39f','#a9835a'], ['#e6d6b8','#c2a175'], ['#cbb28c','#93744e'],
+    ['#d3bd97','#9d7c54'], ['#e8dcc2','#c7ac82'], ['#ddcba8','#a98a5f'], ['#c9ad84','#8f6f49']
+  ];
+
+  var categories = [
+    {name:'New Arrivals', desc:'Discover the latest pieces from ROSEDRESS.', tag:'New'},
+    {name:'Dresses', desc:'Elegant dresses for every occasion.'},
+    {name:'Evening Collection', desc:'Sophisticated looks for your special moments.'},
+    {name:'Modest Collection', desc:'Elegant abayas, hijabs and modest silhouettes.'},
+    {name:'Accessories', desc:'Complete your look with bags, shoes and accessories.'},
+    {name:'Fragrance', desc:'Discover scents that complete the ROSEDRESS experience.'}
+  ];
+
+  var grid = document.getElementById('productGrid');
+  categories.forEach(function(p,i){
+    var g = golds[i % golds.length];
+    var card = document.createElement('div');
+    card.className = 'product-card scroll-reveal';
+    var tagHtml = p.tag ? '<span class="absolute top-3 left-3 z-10 text-[9px] tracking-widest uppercase font-bold px-3 py-1.5 text-white bg-[#1f1d1c]/80 backdrop-blur">'+p.tag+'</span>' : '';
+    card.innerHTML =
+      tagHtml +
+      '<a href="#collections" class="block">'+
+        '<div class="aspect-[3/4] overflow-hidden mb-6 md:mb-8 shadow-md rounded-sm relative group" style="background:linear-gradient(160deg,'+g[0]+','+g[1]+')">'+
+          '<div class="absolute inset-0 texture-zoom" style="background-image:radial-gradient(circle at 30% 30%, rgba(255,255,255,.28), transparent 60%), radial-gradient(circle at 70% 80%, rgba(255,255,255,.15), transparent 55%)"></div>'+
+          '<div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">'+
+            '<span class="bg-white/90 backdrop-blur px-6 md:px-8 py-3 text-[10px] tracking-widest uppercase font-bold text-[#1f1d1c] shadow-xl">Shop Now</span>'+
+          '</div>'+
+        '</div>'+
+        '<div class="text-center px-1">'+
+          '<h4 class="text-sm md:text-base tracking-widest uppercase font-semibold mb-2 transition-colors group-hover:text-[#c9a876]">'+p.name+'</h4>'+
+          '<p class="text-xs md:text-[13px] text-[#9c8b77] font-light leading-relaxed">'+p.desc+'</p>'+
+        '</div>'+
+      '</a>';
+    grid.appendChild(card);
+  });
+
+  function bindReveals(){
+    var el = document.querySelectorAll('.scroll-reveal:not(.visible), .reveal-left:not(.visible), .reveal-right:not(.visible)');
+    if(!('IntersectionObserver' in window)){
+      el.forEach(function(e){ e.classList.add('visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15});
+    el.forEach(function(e){ io.observe(e); });
+  }
+  bindReveals();
+
+  var menuToggle = document.getElementById('menuToggle');
+  var mobileMenu = document.getElementById('mobileMenu');
+  var menuOpen = false;
+  menuToggle.addEventListener('click', function(){
+    menuOpen = !menuOpen;
+    mobileMenu.classList.toggle('opacity-0', !menuOpen);
+    mobileMenu.classList.toggle('invisible', !menuOpen);
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      menuOpen = false;
+      mobileMenu.classList.add('opacity-0','invisible');
+    });
+  });
+
+  var navFixed = document.querySelector('.nav-fixed');
+  function onNavScroll(){
+    if(window.scrollY > 40){
+      navFixed.classList.add('scrolled');
+    } else {
+      navFixed.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', onNavScroll, {passive:true});
+  onNavScroll();
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var videoLayer = document.getElementById('videoLayer');
+  if(reduced){
+    videoLayer.style.animation = 'none';
+  } else {
+    var ticking = false;
+    function onScroll(){
+      ticking = false;
+      var y = window.scrollY * 0.3;
+      videoLayer.style.transform = 'translateY(' + y + 'px)';
+    }
+    window.addEventListener('scroll', function(){
+      if(!ticking){ ticking = true; requestAnimationFrame(onScroll); }
+    }, {passive:true});
+  }
+})();
+</script>
+</body>
+</html>

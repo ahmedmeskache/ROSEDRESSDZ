@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collections — ROSEDRESS</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600&family=Crimson+Text:ital,wght@0,400;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/global.css">
+</head>
+<body class="relative">
+
+<div id="header-holder"></div>
+
+<section class="pt-40 pb-16 px-6 md:px-16 bg-[#f6f2ec]">
+  <div class="max-w-7xl mx-auto">
+    <p class="eyebrow mb-4">The Wardrobe</p>
+    <h1 class="text-4xl md:text-6xl font-serif font-light leading-tight">Collections</h1>
+  </div>
+</section>
+
+<section id="collections" class="pb-24 px-6 md:px-16">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10" id="colGrid"></div>
+</section>
+
+<footer id="site-footer"></footer>
+
+<script src="js/products.js"></script>
+<script src="js/layout.js"></script>
+<script>
+(function(){
+  var grid = document.getElementById('colGrid');
+  var golds = [['#e2cfae','#b08f63'],['#d9c39f','#a9835a'],['#e6d6b8','#c2a175'],['#cbb28c','#93744e'],['#d3bd97','#9d7c54'],['#e8dcc2','#c7ac82']];
+  ROSEDRESS.CATEGORIES.forEach(function(c,i){
+    var g = golds[i % golds.length];
+    var count = ROSEDRESS.PRODUCTS.filter(function(p){return p.cat===c.id;}).length;
+    var div = document.createElement('div');
+    div.className = 'product-card scroll-reveal';
+    div.innerHTML =
+      '<a href="shop.html?cat='+c.id+'" class="block">'+
+        '<div class="aspect-[3/4] overflow-hidden mb-6 shadow-md rounded-sm relative group" style="background:linear-gradient(160deg,'+g[0]+','+g[1]+')">'+
+          '<img src="'+ROSEDRESS.IMG_BY_CAT[c.id]+'" alt="'+c.name+'" loading="lazy" class="w-full h-full object-cover opacity-75 group-hover:opacity-100 transition-opacity">'+
+          '<div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">'+
+            '<span class="bg-white/90 backdrop-blur px-6 py-3 text-[10px] tracking-widest uppercase font-bold text-[#1f1d1c] shadow-xl">Shop '+c.name+'</span>'+
+          '</div>'+
+        '</div>'+
+        '<div class="text-center">'+
+          '<h3 class="text-base tracking-widest uppercase font-semibold mb-1 transition-colors group-hover:text-[#c9a876]">'+c.name+'</h3>'+
+          '<span class="text-xs text-[#9c8b77] font-light">'+count+' pieces</span>'+
+        '</div>'+
+      '</a>';
+    grid.appendChild(div);
+  });
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } }); },{threshold:.1});
+    grid.querySelectorAll('.scroll-reveal').forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>

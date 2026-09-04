@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROSEDRESS — Timeless Craft, Modern Grace</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600&family=Crimson+Text:ital,wght@0,400;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/global.css">
+<style>
+  .video-bg-container{ position:absolute; top:0; left:0; width:100%; height:100vh; z-index:0; overflow:hidden; pointer-events:none; }
+  .video-bg{ position:absolute; inset:-10%; will-change:transform;
+    background:
+      radial-gradient(90% 70% at 15% 10%, rgba(201,168,118,.5) 0%, transparent 55%),
+      radial-gradient(90% 70% at 85% 30%, rgba(156,139,119,.4) 0%, transparent 55%),
+      radial-gradient(100% 80% at 50% 100%, rgba(201,168,118,.35) 0%, transparent 60%),
+      linear-gradient(160deg,#efe7db 0%, #e9dfcf 50%, #dfd1b8 100%);
+    background-size:200% 200%, 200% 200%, 200% 200%, 100% 100%;
+    animation:texdrift 26s ease-in-out infinite alternate;
+    opacity:.4; }
+  .video-bg::after{ content:''; position:absolute; inset:0;
+    background:repeating-linear-gradient(105deg, rgba(255,255,255,.15) 0 1.5px, transparent 1.5px 9px);
+    mix-blend-mode:overlay; }
+  @keyframes texdrift{
+    0%{ background-position:10% 20%, 90% 30%, 50% 100%, 0 0; }
+    100%{ background-position:55% 60%, 40% 70%, 60% 40%, 0 0; } }
+  .video-panes{ position:absolute; inset:0; display:flex; }
+  .video-pane{ flex:1; position:relative; overflow:hidden; min-width:0; }
+  .video-pane video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none; }
+  .video-gutter{ width:2px; background:var(--champagne); opacity:.7; }
+  .video-overlay{ position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(246,242,236,.15) 0%, rgba(246,242,236,.65) 55%, var(--ivory) 100%); }
+</style>
+</head>
+<body class="relative">
+
+<div id="header-holder"></div>
+
+<div class="video-bg-container" id="videoBg">
+  <div class="video-panes">
+    <div class="video-pane">
+      <video autoplay muted loop playsinline>
+        <source src="https://videos.pexels.com/video-files/6482850/6482850-hd_720_1280_25fps.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="video-gutter"></div>
+    <div class="video-pane">
+      <video autoplay muted loop playsinline>
+        <source src="https://videos.pexels.com/video-files/10209556/10209556-hd_1366_720_25fps.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  <div class="video-bg" id="videoLayer"></div>
+  <div class="video-overlay"></div>
+</div>
+
+<header class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative z-10">
+  <div class="max-w-4xl scroll-reveal visible">
+    <span class="text-[#9c8b77] font-semibold tracking-[0.4em] uppercase text-xs mb-8 block">Modest Luxury, Redefined</span>
+    <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-light leading-tight mb-10 tracking-tight">
+      Timeless Craft <br>
+      <span class="italic font-classic">Modern Grace</span>
+    </h1>
+    <p class="max-w-xl mx-auto text-lg text-gray-500 leading-relaxed mb-12 font-light">
+      Abayas, evening gowns and hijabs cut from fabric you can feel through the screen — each piece finished by hand, made to be worn, not just seen.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-6">
+      <a href="shop.html" class="btn-champagne solid px-12 py-5 text-[11px] tracking-[0.3em] uppercase">Shop the Collection</a>
+      <a href="about.html" class="btn-champagne px-12 py-5 text-[11px] tracking-[0.3em] uppercase">Our Story</a>
+    </div>
+  </div>
+</header>
+
+<section id="new-arrivals" class="py-32 md:py-40 px-6 md:px-16 relative z-10">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 scroll-reveal">
+      <div>
+        <span class="eyebrow mb-6 block">01 — New In</span>
+        <h2 class="text-4xl md:text-6xl font-serif font-light leading-tight">New Arrivals</h2>
+      </div>
+      <p class="mt-6 md:mt-0 max-w-md text-sm text-gray-500 leading-relaxed font-light">
+        The latest pieces to enter the atelier. Fresh silhouettes, quiet details — photographed here as they arrive.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+      <a href="product.html?id=p1" class="product-card scroll-reveal block group">
+        <div class="aspect-[3/4] overflow-hidden mb-6 shadow-md rounded-sm relative editorial-img">
+          <img src="https://images.pexels.com/photos/18116163/pexels-photo-18116163.jpeg?auto=compress&cs=tinysrgb&w=900" alt="ROSEDRESS new arrival" loading="lazy" class="w-full h-full object-cover">
+          <span class="absolute top-3 left-3 z-10 text-[9px] tracking-widest uppercase font-bold px-3 py-1.5 text-white bg-[#1f1d1c]/80 backdrop-blur">New</span>
+        </div>
+        <div class="text-center">
+          <h4 class="text-sm md:text-base tracking-widest uppercase font-semibold mb-1 group-hover:text-[#c9a876] transition-colors">The Aria Abaya</h4>
+          <p class="text-xs text-[#9c8b77] font-light">From 8,900 DZD</p>
+        </div>
+      </a>
+      <a href="shop.html" class="product-card scroll-reveal block group">
+        <div class="aspect-[3/4] overflow-hidden mb-6 shadow-md rounded-sm relative editorial-img" style="background:linear-gradient(160deg,#ece0cd,#c7ac82)">
+          <div class="absolute inset-0" style="background-image:radial-gradient(circle at 30% 30%, rgba(255,255,255,.28), transparent 60%), radial-gradient(circle at 70% 80%, rgba(255,255,255,.15), transparent 55%)"></div>
+        </div>
+        <div class="text-center">
+          <h4 class="text-sm md:text-base tracking-widest uppercase font-semibold mb-1 group-hover:text-[#c9a876] transition-colors">Evening Edit</h4>
+          <p class="text-xs text-[#9c8b77] font-light">View the collection</p>
+        </div>
+      </a>
+      <a href="shop.html?cat=fragrance" class="product-card scroll-reveal block group">
+        <div class="aspect-[3/4] overflow-hidden mb-6 shadow-md rounded-sm relative editorial-img" style="background:linear-gradient(160deg,#e4d6c0,#b08f63)">
+          <div class="absolute inset-0" style="background-image:radial-gradient(circle at 30% 30%, rgba(255,255,255,.28), transparent 60%), radial-gradient(circle at 70% 80%, rgba(255,255,255,.15), transparent 55%)"></div>
+        </div>
+        <div class="text-center">
+          <h4 class="text-sm md:text-base tracking-widest uppercase font-semibold mb-1 group-hover:text-[#c9a876] transition-colors">Fragrance</h4>
+          <p class="text-xs text-[#9c8b77] font-light">Discover the scents</p>
+        </div>
+      </a>
+    </div>
+    <div class="text-center mt-16">
+      <a href="shop.html" class="btn-champagne px-12 py-4 text-[11px] tracking-[0.3em] uppercase inline-block">View All</a>
+    </div>
+  </div>
+</section>
+
+<section id="collections" class="py-24 md:py-32 px-6 md:px-16 relative z-10 bg-[#efe8dc]">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-20 scroll-reveal">
+      <span class="eyebrow mb-6 block">02 — The Wardrobe</span>
+      <h2 class="text-4xl md:text-6xl font-serif font-light">Explore the Collection</h2>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8 gap-y-14 md:gap-y-16" id="homeCatGrid"></div>
+    <div class="text-center mt-16">
+      <a href="collections.html" class="btn-champagne px-12 py-4 text-[11px] tracking-[0.3em] uppercase inline-block">All Collections</a>
+    </div>
+  </div>
+</section>
+
+<section id="edit" class="py-32 md:py-40 px-6 md:px-16 relative z-10">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <div class="editorial-img reveal-left">
+      <img src="https://images.pexels.com/photos/8995843/pexels-photo-8995843.jpeg?auto=compress&cs=tinysrgb&w=900" alt="ROSEDRESS EDIT" loading="lazy" class="w-full aspect-[3/4] object-cover shadow-lg rounded-sm">
+    </div>
+    <div class="reveal-right">
+      <span class="eyebrow mb-6 block">03 — The Edit</span>
+      <h2 class="text-4xl md:text-5xl font-serif font-light leading-tight mb-8">The ROSEDRESS Edit</h2>
+      <p class="text-gray-500 leading-loose font-light mb-8 max-w-lg">
+        A curated look at how ROSEDRESS pieces come together. Each edit is composed with the same care as the garments themselves.
+      </p>
+      <a href="lookbook.html" class="btn-champagne solid px-10 py-4 text-[11px] tracking-[0.3em] uppercase inline-block">View Lookbook</a>
+    </div>
+  </div>
+</section>
+
+<section id="signature" class="py-24 md:py-32 px-6 md:px-16 relative z-10">
+  <div class="max-w-7xl mx-auto text-center scroll-reveal">
+    <span class="eyebrow mb-6 block">04 — Signature</span>
+    <h2 class="text-4xl md:text-5xl font-serif font-light mb-10">The ROSEDRESS Signature</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 max-w-5xl mx-auto text-left">
+      <div>
+        <h4 class="tracking-[0.3em] uppercase text-sm font-semibold mb-3 text-[#c9a876]">Craft</h4>
+        <p class="text-sm text-gray-500 leading-relaxed font-light">Every Rosedress piece is finished by hand, cut from fabrics meant to move with you.</p>
+      </div>
+      <div>
+        <h4 class="tracking-[0.3em] uppercase text-sm font-semibold mb-3 text-[#c9a876]">Modesty</h4>
+        <p class="text-sm text-gray-500 leading-relaxed font-light">Elegance defined by coverage — silhouettes confident, graceful and true.</p>
+      </div>
+      <div>
+        <h4 class="tracking-[0.3em] uppercase text-sm font-semibold mb-3 text-[#c9a876]">Grace</h4>
+        <p class="text-sm text-gray-500 leading-relaxed font-light">Designed to make you feel beautiful — quiet luxury meant to be worn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-24 md:py-32 px-6 md:px-16 relative z-10 bg-[#efe8dc]">
+  <div class="max-w-7xl mx-auto text-center scroll-reveal">
+    <span class="eyebrow mb-6 block">05 — Follow</span>
+    <h2 class="text-4xl md:text-5xl font-serif font-light mb-6">Stay close to the atelier</h2>
+    <p class="text-gray-500 max-w-md mx-auto mb-10 font-light">New arrivals, bespoke openings and quiet previews — follow along.</p>
+    <a href="https://www.instagram.com/rosedressdz/" target="_blank" rel="noopener" class="btn-champagne solid px-10 py-4 text-[11px] tracking-[0.3em] uppercase inline-flex items-center gap-3">
+      <iconify-icon icon="lucide:instagram" class="text-lg"></iconify-icon> @rosedressdz
+    </a>
+  </div>
+</section>
+
+<section id="visit" class="py-32 md:py-40 px-6 md:px-16 relative z-10">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <div class="reveal-left">
+      <span class="eyebrow mb-6 block">06 — Visit</span>
+      <h2 class="text-4xl md:text-5xl font-serif font-light leading-tight mb-8">Visit Rosedress</h2>
+      <p class="text-gray-500 leading-loose font-light mb-8 max-w-lg">
+        Step into our boutique and experience the collection in person.
+      </p>
+      <div class="text-sm text-[#9c8b77] font-light leading-loose mb-10">
+        <p>Annaba, Algeria</p>
+        <p class="italic font-classic">Precise address and opening hours to be confirmed.</p>
+      </div>
+      <a href="contact.html" class="btn-champagne solid px-10 py-4 text-[11px] tracking-[0.3em] uppercase inline-block">Get in Touch</a>
+    </div>
+    <div class="editorial-img reveal-right">
+      <img src="https://images.pexels.com/photos/18116163/pexels-photo-18116163.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Visit ROSEDRESS boutique" loading="lazy" class="w-full aspect-[3/4] object-cover shadow-lg rounded-sm">
+    </div>
+  </div>
+</section>
+
+<section class="py-24 md:py-32 px-6 md:px-12 text-center relative z-10 bg-[#1f1d1c] text-white">
+  <div class="max-w-2xl mx-auto scroll-reveal">
+    <h2 class="text-4xl md:text-5xl font-serif font-light mb-8 italic text-[#c9a876]">New in, quiet first.</h2>
+    <p class="text-[#c9a876]/80 mb-12 font-light">New arrivals, bespoke openings and quiet previews — nothing else.</p>
+    <form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto" onsubmit="event.preventDefault();">
+      <input type="email" placeholder="Email" required class="flex-1 bg-white/10 border border-white/20 px-8 py-5 text-sm font-light focus:outline-none focus:border-[#c9a876] transition-all text-white placeholder-white/50">
+      <button type="submit" class="px-10 py-5 bg-[#c9a876] text-[#1f1d1c] text-[11px] tracking-widest uppercase font-bold hover:bg-white transition-colors">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<footer id="site-footer"></footer>
+
+<script src="js/products.js"></script>
+<script src="js/layout.js"></script>
+<script>
+(function(){
+  var golds = [['#e2cfae','#b08f63'],['#d9c39f','#a9835a'],['#e6d6b8','#c2a175'],['#cbb28c','#93744e'],['#d3bd97','#9d7c54'],['#e8dcc2','#c7ac82']];
+  var grid = document.getElementById('homeCatGrid');
+  ROSEDRESS.CATEGORIES.forEach(function(c,i){
+    var g = golds[i % golds.length];
+    var div = document.createElement('div');
+    div.className = 'product-card scroll-reveal';
+    div.innerHTML =
+      '<a href="shop.html?cat='+c.id+'" class="block group">'+
+        '<div class="aspect-[3/4] overflow-hidden mb-5 shadow-md rounded-sm relative" style="background:linear-gradient(160deg,'+g[0]+','+g[1]+')">'+
+          '<div class="absolute inset-0 transition-transform duration-1000 group-hover:scale-110" style="background-image:radial-gradient(circle at 30% 30%, rgba(255,255,255,.28), transparent 60%), radial-gradient(circle at 70% 80%, rgba(255,255,255,.15), transparent 55%)"></div>'+
+        '</div>'+
+        '<div class="text-center">'+
+          '<h4 class="text-[11px] md:text-sm tracking-widest uppercase font-semibold transition-colors group-hover:text-[#c9a876]">'+c.name+'</h4>'+
+        '</div>'+
+      '</a>';
+    grid.appendChild(div);
+  });
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var videoLayer = document.getElementById('videoLayer');
+  if(reduced){ videoLayer.style.animation='none'; }
+  else {
+    var ticking=false;
+    function onScroll(){ ticking=false; videoLayer.style.transform='translateY('+(window.scrollY*0.3)+'px)'; }
+    window.addEventListener('scroll', function(){ if(!ticking){ ticking=true; requestAnimationFrame(onScroll); } },{passive:true});
+  }
+})();
+</script>
+</body>
+</html>
