@@ -1,14 +1,18 @@
 :root{
   --ivory:#f6f2ec;
   --sage:#b7a184;
-  --champagne:#c9a876;
+  --champagne:#d6a24a;
   --dark:#1f1d1c;
-  --beige:#e7ddd0;
+  --beige:#efe5d3;
   --taupe:#a69a8c;
 }
 html{ scroll-behavior:smooth; }
 body{
-  background:var(--ivory); color:var(--dark);
+  background:
+    radial-gradient(80% 60% at 12% 0%, rgba(214,162,74,.14) 0%, transparent 55%),
+    radial-gradient(70% 55% at 90% 8%, rgba(183,161,132,.18) 0%, transparent 55%),
+    linear-gradient(165deg,#fbf7ef 0%, #f3ece0 50%, #efe3d0 100%);
+  color:var(--dark);
   font-family:'Plus Jakarta Sans',sans-serif; font-weight:300;
 }
 h1,h2,h3,h4,.font-serif{ font-family:'Playfair Display',serif; }
@@ -50,4 +54,4 @@ h1,h2,h3,h4,.font-serif{ font-family:'Playfair Display',serif; }
 .editorial-img img{ transition:transform 1.4s cubic-bezier(.2,.7,.3,1); }
 .editorial-img:hover img{ transform:scale(1.06); }
 
-.eyebrow{ color:#9c8b77; font-weight:600; letter-spacing:.4em; text-transform:uppercase; font-size:12px; }
+.eyebrow{ color:#b8860b; font-weight:600; letter-spacing:.4em; text-transform:uppercase; font-size:12px; }

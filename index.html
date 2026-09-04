@@ -11,19 +11,50 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@200;300;400;500;600&family=Crimson+Text:ital,wght@0,400;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/global.css">
 <style>
-  /* hero is intentionally bare — buttons only */
+  .hero-split{ position:absolute; inset:0; }
+  .hero-pane{ position:absolute; top:0; bottom:0; overflow:hidden; }
+  .hero-pane.left{ left:0; width:58%; clip-path:polygon(0 0, 100% 0, 93% 100%, 0 100%); }
+  .hero-pane.right{ right:0; width:58%; clip-path:polygon(7% 0, 100% 0, 100% 100%, 0 100%); }
+  .hero-img{ width:100%; height:100%; object-fit:cover; transform:scale(1.06);
+    animation:kenburns 22s ease-in-out infinite alternate; }
+  .hero-pane.right .hero-img{ animation-delay:-11s; }
+  @keyframes kenburns{
+    0%{ transform:scale(1.06) translate(0,0); }
+    100%{ transform:scale(1.2) translate(-1.2%, -0.8%); } }
+  .hero-shade{ position:absolute; inset:0; }
+  .hero-shade.left{ background:linear-gradient(90deg, rgba(20,16,12,.42) 0%, transparent 55%); }
+  .hero-shade.right{ background:linear-gradient(270deg, rgba(20,16,12,.42) 0%, transparent 55%); }
+  .hero-fade{ position:absolute; left:0; right:0; bottom:0; height:45vh;
+    background:linear-gradient(180deg, transparent, rgba(246,242,236,.55) 70%, var(--ivory) 100%); }
+  .hero-wordmark{ font-family:'Playfair Display',serif; font-weight:200; text-transform:uppercase;
+    font-size:clamp(2.8rem, 13vw, 10.5rem); letter-spacing:.07em; line-height:1;
+    color:#fff; text-shadow:0 8px 50px rgba(0,0,0,.5), 0 2px 10px rgba(0,0,0,.35); }
 </style>
 </head>
 <body class="relative">
 
 <div id="header-holder"></div>
 
-<header class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative z-10">
-  <div class="flex flex-col sm:flex-row justify-center gap-6">
-    <a href="shop.html" class="px-12 py-5 text-[11px] tracking-[0.3em] uppercase border border-[#1f1d1c] text-[#1f1d1c] transition-colors hover:bg-[#1f1d1c] hover:text-white">Shop the Collection</a>
-    <a href="about.html" class="px-12 py-5 text-[11px] tracking-[0.3em] uppercase border border-[#1f1d1c]/60 text-[#1f1d1c]/90 transition-colors hover:bg-[#1f1d1c] hover:text-white">Our Story</a>
+<section class="relative min-h-screen w-full overflow-hidden">
+  <div class="hero-split">
+    <div class="hero-pane left">
+      <img src="images/dress_bandeau.jpg" alt="ROSEDRESS editorial" loading="lazy" class="hero-img">
+      <div class="hero-shade left"></div>
+    </div>
+    <div class="hero-pane right">
+      <img src="images/dress_selene_maxi.jpg" alt="ROSEDRESS editorial" loading="lazy" class="hero-img">
+      <div class="hero-shade right"></div>
+    </div>
   </div>
-</header>
+  <div class="hero-fade"></div>
+  <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10">
+    <h1 class="hero-wordmark">RO&shy;SE&shy;DRESS</h1>
+    <div class="mt-10 md:mt-14 flex flex-col sm:flex-row justify-center gap-6">
+      <a href="shop.html" class="px-12 py-5 text-[11px] tracking-[0.3em] uppercase border border-white text-white transition-colors hover:bg-white hover:text-[#1f1d1c] bg-black/20 backdrop-blur">Shop the Collection</a>
+      <a href="about.html" class="px-12 py-5 text-[11px] tracking-[0.3em] uppercase border border-white/70 text-white/90 transition-colors hover:bg-white hover:text-[#1f1d1c] bg-black/10 backdrop-blur">Our Story</a>
+    </div>
+  </div>
+</section>
 
 <section id="new-arrivals" class="py-32 md:py-40 px-6 md:px-16 relative z-10">
   <div class="max-w-7xl mx-auto">
