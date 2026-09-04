@@ -11,24 +11,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@200;300;400;500;600&family=Crimson+Text:ital,wght@0,400;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/global.css">
 <style>
-  .hero-split{ position:absolute; inset:0; }
-  .hero-pane{ position:absolute; top:0; bottom:0; overflow:hidden; }
-  .hero-pane.left{ left:0; width:58%; clip-path:polygon(0 0, 100% 0, 93% 100%, 0 100%); }
-  .hero-pane.right{ right:0; width:58%; clip-path:polygon(7% 0, 100% 0, 100% 100%, 0 100%); }
-  .hero-img{ width:100%; height:100%; object-fit:cover; transform:scale(1.06);
-    animation:kenburns 22s ease-in-out infinite alternate; }
-  .hero-pane.right .hero-img{ animation-delay:-11s; }
-  @keyframes kenburns{
-    0%{ transform:scale(1.06) translate(0,0); }
-    100%{ transform:scale(1.2) translate(-1.2%, -0.8%); } }
-  .hero-shade{ position:absolute; inset:0; }
-  .hero-shade.left{ background:linear-gradient(90deg, rgba(20,16,12,.42) 0%, transparent 55%); }
-  .hero-shade.right{ background:linear-gradient(270deg, rgba(20,16,12,.42) 0%, transparent 55%); }
-  .hero-fade{ position:absolute; left:0; right:0; bottom:0; height:45vh;
+  .hero-slider{ position:absolute; inset:0; }
+  .hero-slide{ position:absolute; inset:0; opacity:0; visibility:hidden;
+    transition:opacity 1.4s ease, visibility 0s linear 1.4s; }
+  .hero-slide.active{ opacity:1; visibility:visible; z-index:1; transition:opacity 1.4s ease; }
+  .hero-slide img{ width:100%; height:100%; object-fit:cover; }
+  .hero-slide .hero-shade{ position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(15,12,9,.35) 0%, rgba(15,12,9,.12) 45%, rgba(15,12,9,.45) 100%); }
+  .hero-title{ position:absolute; inset:0; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; text-align:center;
+    opacity:0; transform:translateY(28px);
+    transition:opacity 1.1s ease .25s, transform 1.1s cubic-bezier(.2,.7,.3,1) .25s; }
+  .hero-slide.active .hero-title{ opacity:1; transform:none; }
+  .hero-word{ font-family:'Playfair Display',serif; font-weight:200; text-transform:uppercase;
+    font-size:clamp(2.8rem, 13vw, 10rem); letter-spacing:.09em; line-height:1.05; color:#fff;
+    text-shadow:0 10px 55px rgba(0,0,0,.55), 0 2px 10px rgba(0,0,0,.4); }
+  .hero-fade{ position:absolute; left:0; right:0; bottom:0; height:45vh; z-index:2;
     background:linear-gradient(180deg, transparent, rgba(246,242,236,.55) 70%, var(--ivory) 100%); }
-  .hero-wordmark{ font-family:'Playfair Display',serif; font-weight:200; text-transform:uppercase;
-    font-size:clamp(2.8rem, 13vw, 10.5rem); letter-spacing:.07em; line-height:1;
-    color:#fff; text-shadow:0 8px 50px rgba(0,0,0,.5), 0 2px 10px rgba(0,0,0,.35); }
+  .hero-dots{ position:absolute; bottom:36px; left:0; right:0; z-index:3;
+    display:flex; justify-content:center; gap:14px; }
+  .hero-dots span{ width:36px; height:2px; background:rgba(255,255,255,.45); cursor:pointer; transition:all .5s ease; }
+  .hero-dots span.on{ background:#fff; width:62px; }
 </style>
 </head>
 <body class="relative">
@@ -36,23 +39,55 @@
 <div id="header-holder"></div>
 
 <section class="relative min-h-screen w-full overflow-hidden">
-  <div class="hero-split">
-    <div class="hero-pane left">
-      <img src="images/dress_bandeau.jpg" alt="ROSEDRESS editorial" loading="lazy" class="hero-img">
-      <div class="hero-shade left"></div>
+  <div class="hero-slider">
+    <div class="hero-slide active">
+      <img src="images/dress_selene_maxi.jpg" alt="TIMELESS" loading="lazy">
+      <div class="hero-shade"></div>
+      <div class="hero-title">
+        <h2 class="hero-word">TIMELESS</h2>
+        <div class="mt-10 md:mt-14 flex flex-col sm:flex-row justify-center gap-6">
+          <a href="shop.html" class="px-12 py-5 text-[11px] tracking-[0.3em] uppercase border border-white text-white transition-colors hover:bg-white hover:text-[#1f1d1c] bg-black/20 backdrop-blur">Shop the Collection</a>
+          <a href="about.html" class="px-12 py-5 text-[11px] tracking-[0.3em] uppercase border border-white/70 text-white/90 transition-colors hover:bg-white hover:text-[#1f1d1c] bg-black/10 backdrop-blur">Our Story</a>
+        </div>
+      </div>
     </div>
-    <div class="hero-pane right">
-      <img src="images/dress_selene_maxi.jpg" alt="ROSEDRESS editorial" loading="lazy" class="hero-img">
-      <div class="hero-shade right"></div>
+    <div class="hero-slide">
+      <img src="images/cat_evening.jpg" alt="CRAFT" loading="lazy">
+      <div class="hero-shade"></div>
+      <div class="hero-title">
+        <h2 class="hero-word">CRAFT</h2>
+        <div class="mt-10 md:mt-14 flex flex-col sm:flex-row justify-center gap-6">
+          <a href="shop.html" class="px-12 py-5 text-[11px] tracking-[0.3em] uppercase border border-white text-white transition-colors hover:bg-white hover:text-[#1f1d1c] bg-black/20 backdrop-blur">Shop the Collection</a>
+          <a href="about.html" class="px-12 py-5 text-[11px] tracking-[0.3em] uppercase border border-white/70 text-white/90 transition-colors hover:bg-white hover:text-[#1f1d1c] bg-black/10 backdrop-blur">Our Story</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <img src="images/hijab_girl1.jpg" alt="MODERN" loading="lazy">
+      <div class="hero-shade"></div>
+      <div class="hero-title">
+        <h2 class="hero-word">MODERN</h2>
+        <div class="mt-10 md:mt-14 flex flex-col sm:flex-row justify-center gap-6">
+          <a href="shop.html" class="px-12 py-5 text-[11px] tracking-[0.3em] uppercase border border-white text-white transition-colors hover:bg-white hover:text-[#1f1d1c] bg-black/20 backdrop-blur">Shop the Collection</a>
+          <a href="about.html" class="px-12 py-5 text-[11px] tracking-[0.3em] uppercase border border-white/70 text-white/90 transition-colors hover:bg-white hover:text-[#1f1d1c] bg-black/10 backdrop-blur">Our Story</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <img src="images/dress_bandeau.jpg" alt="GRACE" loading="lazy">
+      <div class="hero-shade"></div>
+      <div class="hero-title">
+        <h2 class="hero-word">GRACE</h2>
+        <div class="mt-10 md:mt-14 flex flex-col sm:flex-row justify-center gap-6">
+          <a href="shop.html" class="px-12 py-5 text-[11px] tracking-[0.3em] uppercase border border-white text-white transition-colors hover:bg-white hover:text-[#1f1d1c] bg-black/20 backdrop-blur">Shop the Collection</a>
+          <a href="about.html" class="px-12 py-5 text-[11px] tracking-[0.3em] uppercase border border-white/70 text-white/90 transition-colors hover:bg-white hover:text-[#1f1d1c] bg-black/10 backdrop-blur">Our Story</a>
+        </div>
+      </div>
     </div>
   </div>
   <div class="hero-fade"></div>
-  <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10">
-    <h1 class="hero-wordmark">RO&shy;SE&shy;DRESS</h1>
-    <div class="mt-10 md:mt-14 flex flex-col sm:flex-row justify-center gap-6">
-      <a href="shop.html" class="px-12 py-5 text-[11px] tracking-[0.3em] uppercase border border-white text-white transition-colors hover:bg-white hover:text-[#1f1d1c] bg-black/20 backdrop-blur">Shop the Collection</a>
-      <a href="about.html" class="px-12 py-5 text-[11px] tracking-[0.3em] uppercase border border-white/70 text-white/90 transition-colors hover:bg-white hover:text-[#1f1d1c] bg-black/10 backdrop-blur">Our Story</a>
-    </div>
+  <div class="hero-dots">
+    <span class="on"></span><span></span><span></span><span></span>
   </div>
 </section>
 
@@ -206,6 +241,31 @@
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(reduced){ /* no hero video layers */ }
+
+  var slides = document.querySelectorAll('.hero-slide');
+  var dots = document.querySelectorAll('.hero-dots span');
+  if(slides.length && !reduced){
+    var idx = 0;
+    var timer = setInterval(next, 4500);
+    function next(){
+      slides[idx].classList.remove('active');
+      dots[idx].classList.remove('on');
+      idx = (idx + 1) % slides.length;
+      slides[idx].classList.add('active');
+      dots[idx].classList.add('on');
+    }
+    dots.forEach(function(d,i){
+      d.addEventListener('click', function(){
+        clearInterval(timer);
+        slides[idx].classList.remove('active');
+        dots[idx].classList.remove('on');
+        idx = i;
+        slides[idx].classList.add('active');
+        dots[idx].classList.add('on');
+        timer = setInterval(next, 4500);
+      });
+    });
+  }
 })();
 </script>
 </body>
