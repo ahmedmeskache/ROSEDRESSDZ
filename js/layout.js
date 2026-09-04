@@ -6,7 +6,6 @@ window.ROSEDRESS = window.ROSEDRESS || {};
     {href:"index.html", label:"Home"},
     {href:"shop.html", label:"Shop"},
     {href:"collections.html", label:"Collections"},
-    {href:"lookbook.html", label:"Lookbook"},
     {href:"about.html", label:"About"},
     {href:"contact.html", label:"Contact"},
     {href:"cart.html", label:"Cart"}
@@ -72,7 +71,6 @@ window.ROSEDRESS = window.ROSEDRESS || {};
           '<ul class="space-y-4 text-[13px] font-light">'+
             '<li><a href="shop.html" class="hover:text-[#c9a876] transition-colors">Shop</a></li>'+
             '<li><a href="collections.html" class="hover:text-[#c9a876] transition-colors">Collections</a></li>'+
-            '<li><a href="lookbook.html" class="hover:text-[#c9a876] transition-colors">Lookbook</a></li>'+
             '<li><a href="about.html" class="hover:text-[#c9a876] transition-colors">Our Story</a></li>'+
           '</ul>'+
         '</div>'+

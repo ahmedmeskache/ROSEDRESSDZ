@@ -1,15 +1,31 @@
 window.ROSEDRESS = window.ROSEDRESS || {};
 
-ROSEDRESS.PROD_IMG = "https://images.pexels.com/photos/18116163/pexels-photo-18116163.jpeg?auto=compress&cs=tinysrgb&w=900";
-ROSEDRESS.EDIT_IMG = "https://images.pexels.com/photos/8995843/pexels-photo-8995843.jpeg?auto=compress&cs=tinysrgb&w=900";
+var PX = "https://images.pexels.com/photos/";
+
+ROSEDRESS.PROD_IMG = PX + "35463633/pexels-photo-35463633.jpeg?auto=compress&cs=tinysrgb&w=900";
 
 ROSEDRESS.IMG_BY_CAT = {
-  "new-arrivals":  ROSEDRESS.PROD_IMG,
-  "dresses":       ROSEDRESS.EDIT_IMG,
-  "evening":       ROSEDRESS.PROD_IMG,
-  "modest":        ROSEDRESS.EDIT_IMG,
-  "accessories":   ROSEDRESS.PROD_IMG,
-  "fragrance":     ROSEDRESS.EDIT_IMG
+  "new-arrivals":  PX + "35463633/pexels-photo-35463633.jpeg?auto=compress&cs=tinysrgb&w=900",
+  "dresses":       PX + "31974752/pexels-photo-31974752.jpeg?auto=compress&cs=tinysrgb&w=900",
+  "evening":       PX + "37068087/pexels-photo-37068087.jpeg?auto=compress&cs=tinysrgb&w=900",
+  "modest":        PX + "32272078/pexels-photo-32272078.jpeg?auto=compress&cs=tinysrgb&w=900",
+  "accessories":   PX + "34997536/pexels-photo-34997536.jpeg?auto=compress&cs=tinysrgb&w=900",
+  "fragrance":     PX + "30463181/pexels-photo-30463181.jpeg?auto=compress&cs=tinysrgb&w=900"
+};
+
+ROSEDRESS.IMG = {
+  p1:  PX + "35324598/pexels-photo-35324598.jpeg?auto=compress&cs=tinysrgb&w=900",
+  p2:  PX + "37068087/pexels-photo-37068087.jpeg?auto=compress&cs=tinysrgb&w=900",
+  p3:  PX + "33539326/pexels-photo-33539326.jpeg?auto=compress&cs=tinysrgb&w=900",
+  p4:  PX + "35463633/pexels-photo-35463633.jpeg?auto=compress&cs=tinysrgb&w=900",
+  p5:  PX + "31974752/pexels-photo-31974752.jpeg?auto=compress&cs=tinysrgb&w=900",
+  p6:  PX + "29352053/pexels-photo-29352053.jpeg?auto=compress&cs=tinysrgb&w=900",
+  p7:  PX + "32272078/pexels-photo-32272078.jpeg?auto=compress&cs=tinysrgb&w=900",
+  p8:  PX + "34997536/pexels-photo-34997536.jpeg?auto=compress&cs=tinysrgb&w=900",
+  p9:  PX + "32101064/pexels-photo-32101064.jpeg?auto=compress&cs=tinysrgb&w=900",
+  p10: PX + "30463181/pexels-photo-30463181.jpeg?auto=compress&cs=tinysrgb&w=900",
+  p11: PX + "14238877/pexels-photo-14238877.jpeg?auto=compress&cs=tinysrgb&w=900",
+  p12: PX + "36707016/pexels-photo-36707016.jpeg?auto=compress&cs=tinysrgb&w=900"
 };
 
 ROSEDRESS.CATEGORIES = [
@@ -40,7 +56,7 @@ ROSEDRESS.getCat = function(id){ return ROSEDRESS.CATEGORIES.find(function(c){re
 ROSEDRESS.getProduct = function(id){ return ROSEDRESS.PRODUCTS.find(function(p){return p.id===id;}); };
 
 ROSEDRESS.img = function(p){
-  var key = ROSEDRESS.IMG_BY_CAT[p.img] || ROSEDRESS.IMG_BY_CAT[p.cat] || ROSEDRESS.PROD_IMG;
+  var key = ROSEDRESS.IMG[p.id] || ROSEDRESS.IMG_BY_CAT[p.img] || ROSEDRESS.IMG_BY_CAT[p.cat] || ROSEDRESS.PROD_IMG;
   return key;
 };
 
