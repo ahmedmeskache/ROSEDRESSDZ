@@ -27,10 +27,9 @@
   @keyframes texdrift{
     0%{ background-position:10% 20%, 90% 30%, 50% 100%, 0 0; }
     100%{ background-position:55% 60%, 40% 70%, 60% 40%, 0 0; } }
-  .video-panes{ position:absolute; inset:0; display:flex; }
-  .video-pane{ flex:1; position:relative; overflow:hidden; min-width:0; }
+  .video-panes{ position:absolute; inset:0; }
+  .video-pane{ position:relative; overflow:hidden; width:100%; height:100%; }
   .video-pane video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none; }
-  .video-gutter{ width:2px; background:var(--champagne); opacity:.7; }
   .video-overlay{ position:absolute; inset:0;
     background:linear-gradient(180deg, rgba(246,242,236,.15) 0%, rgba(246,242,236,.65) 55%, var(--ivory) 100%); }
 </style>
@@ -43,13 +42,7 @@
   <div class="video-panes">
     <div class="video-pane">
       <video autoplay muted loop playsinline>
-        <source src="https://videos.pexels.com/video-files/7680438/7680438-sd_506_960_25fps.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="video-gutter"></div>
-    <div class="video-pane">
-      <video autoplay muted loop playsinline>
-        <source src="https://videos.pexels.com/video-files/34555114/14647356_360_640_50fps.mp4" type="video/mp4">
+        <source src="https://videos.pexels.com/video-files/7680449/7680449-sd_960_506_25fps.mp4" type="video/mp4">
       </video>
     </div>
   </div>
