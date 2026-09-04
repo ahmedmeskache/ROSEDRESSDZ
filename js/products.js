@@ -2,30 +2,30 @@ window.ROSEDRESS = window.ROSEDRESS || {};
 
 var PX = "https://images.pexels.com/photos/";
 
-ROSEDRESS.PROD_IMG = PX + "35463633/pexels-photo-35463633.jpeg?auto=compress&cs=tinysrgb&w=900";
+ROSEDRESS.PROD_IMG = "images/dress_bandeau.jpg";
 
 ROSEDRESS.IMG_BY_CAT = {
-  "new-arrivals":  PX + "35463633/pexels-photo-35463633.jpeg?auto=compress&cs=tinysrgb&w=900",
-  "dresses":       PX + "31974752/pexels-photo-31974752.jpeg?auto=compress&cs=tinysrgb&w=900",
-  "evening":       PX + "37068087/pexels-photo-37068087.jpeg?auto=compress&cs=tinysrgb&w=900",
-  "modest":        PX + "32272078/pexels-photo-32272078.jpeg?auto=compress&cs=tinysrgb&w=900",
-  "accessories":   PX + "34997536/pexels-photo-34997536.jpeg?auto=compress&cs=tinysrgb&w=900",
-  "fragrance":     PX + "30463181/pexels-photo-30463181.jpeg?auto=compress&cs=tinysrgb&w=900"
+  "new-arrivals":  "images/dress_highneck.jpg",
+  "dresses":       "images/dress_bandeau.jpg",
+  "evening":       "images/dress_rhinestones.jpg",
+  "modest":        "images/dress_mockneck.jpg",
+  "accessories":   "images/bag_shoulder.jpg",
+  "fragrance":     PX + "264819/pexels-photo-264819.jpeg?auto=compress&cs=tinysrgb&w=900"
 };
 
 ROSEDRESS.IMG = {
-  p1:  PX + "35324598/pexels-photo-35324598.jpeg?auto=compress&cs=tinysrgb&w=900",
-  p2:  PX + "37068087/pexels-photo-37068087.jpeg?auto=compress&cs=tinysrgb&w=900",
-  p3:  PX + "33539326/pexels-photo-33539326.jpeg?auto=compress&cs=tinysrgb&w=900",
-  p4:  PX + "35463633/pexels-photo-35463633.jpeg?auto=compress&cs=tinysrgb&w=900",
-  p5:  PX + "31974752/pexels-photo-31974752.jpeg?auto=compress&cs=tinysrgb&w=900",
-  p6:  PX + "29352053/pexels-photo-29352053.jpeg?auto=compress&cs=tinysrgb&w=900",
-  p7:  PX + "32272078/pexels-photo-32272078.jpeg?auto=compress&cs=tinysrgb&w=900",
-  p8:  PX + "34997536/pexels-photo-34997536.jpeg?auto=compress&cs=tinysrgb&w=900",
-  p9:  PX + "32101064/pexels-photo-32101064.jpeg?auto=compress&cs=tinysrgb&w=900",
-  p10: PX + "30463181/pexels-photo-30463181.jpeg?auto=compress&cs=tinysrgb&w=900",
+  p1:  "images/dress_mockneck.jpg",
+  p2:  "images/dress_rhinestones.jpg",
+  p3:  "images/dress_highneck.jpg",
+  p4:  "images/dress_bandeau.jpg",
+  p5:  "images/dress_lacestrap.jpg",
+  p6:  "images/dress_halter.jpg",
+  p7:  "images/dress_ruchedmidi.jpg",
+  p8:  "images/bag_buckles.jpg",
+  p9:  "images/sandals_mule1.jpg",
+  p10: PX + "32645088/pexels-photo-32645088.jpeg?auto=compress&cs=tinysrgb&w=900",
   p11: PX + "14238877/pexels-photo-14238877.jpeg?auto=compress&cs=tinysrgb&w=900",
-  p12: PX + "36707016/pexels-photo-36707016.jpeg?auto=compress&cs=tinysrgb&w=900"
+  p12: "images/dress_halterties.jpg"
 };
 
 ROSEDRESS.CATEGORIES = [
@@ -47,7 +47,7 @@ ROSEDRESS.PRODUCTS = [
   {id:"p7", name:"Ilyana Silk Abaya",   cat:"modest",      price:11200, tag:"",   img:"modest"},
   {id:"p8", name:"Lina Leather Handbag",cat:"accessories", price:6800,  tag:"new", img:"accessories"},
   {id:"p9", name:"Rima Gold Sandals",   cat:"accessories", price:3900,  tag:"",   img:"accessories"},
-  {id:"p10", name:"Oud Noir Parfum",    cat:"fragrance",   price:5800,  tag:"",   img:"fragrance"},
+  {id:"p10", name:"Rose Élixir Parfum", cat:"fragrance",   price:5800,  tag:"",   img:"fragrance"},
   {id:"p11", name:"Amber Rose Eau",     cat:"fragrance",   price:4600,  tag:"new", img:"fragrance"},
   {id:"p12", name:"Nadia Embroidered Gown", cat:"evening", price:17900, tag:"",   img:"evening"}
 ];
