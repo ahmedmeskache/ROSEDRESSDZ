@@ -33,7 +33,7 @@ window.ROSEDRESS = window.ROSEDRESS || {};
       '</div>'+
       '<div class="absolute left-1/2 -translate-x-1/2 flex flex-col items-center leading-none">'+
         '<a href="index.html" class="block" aria-label="Rosedress">'+
-          '<img src="logo.svg" alt="Rosedress" class="h-12 md:h-14 w-auto object-contain">'+
+          '<img src="logo.png" alt="Rosedress" class="h-12 md:h-14 w-auto object-contain">'+
         '</a>'+
         '<span class="hidden md:block text-[10px] tracking-[0.5em] text-[#9c8b77] mt-1">ROSEDRESS COLLECTION</span>'+
       '</div>'+
@@ -64,7 +64,7 @@ window.ROSEDRESS = window.ROSEDRESS || {};
     f.innerHTML =
       '<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-20">'+
         '<div class="md:col-span-2">'+
-          '<a href="index.html" class="block mb-8 inline-block"><img src="logo.svg" alt="Rosedress" class="h-16 md:h-24 w-auto object-contain"></a>'+
+          '<a href="index.html" class="block mb-8 inline-block"><img src="logo.png" alt="Rosedress" class="h-16 md:h-24 w-auto object-contain"></a>'+
           '<p class="text-sm text-gray-500 leading-loose max-w-sm font-light italic font-classic">Modesty and elegance, cut from the same cloth. Every Rosedress piece is designed to make you feel confident, beautiful and true to your values.</p>'+
         '</div>'+
         '<div class="space-y-6">'+
