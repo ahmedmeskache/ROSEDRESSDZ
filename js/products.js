@@ -9,7 +9,7 @@ ROSEDRESS.IMG_BY_CAT = {
   "dresses":       "images/cat_dresses.jpg",
   "evening":       "images/cat_evening.jpg",
   "modest":        "images/cat_modest.jpg",
-  "hijab":         "images/dress_ruchedmidi.jpg",
+  "hijab":         "images/hijab_girl4.jpg",
   "accessories":   "images/bag_shoulder.jpg",
   "fragrance":     PX + "264819/pexels-photo-264819.jpeg?auto=compress&cs=tinysrgb&w=900"
 };
@@ -17,7 +17,7 @@ ROSEDRESS.IMG_BY_CAT = {
 ROSEDRESS.IMG = {
   p1:  "images/dress_mockneck.jpg",
   p2:  "images/dress_selene_maxi.jpg",
-  p3:  "images/dress_highneck.jpg",
+  p3:  "images/hijab_girl3.jpg",
   p4:  "images/dress_bandeau.jpg",
   p5:  "images/dress_lacestrap.jpg",
   p6:  "images/dress_halter.jpg",
@@ -27,8 +27,8 @@ ROSEDRESS.IMG = {
   p10: PX + "32645088/pexels-photo-32645088.jpeg?auto=compress&cs=tinysrgb&w=900",
   p11: PX + "14238877/pexels-photo-14238877.jpeg?auto=compress&cs=tinysrgb&w=900",
   p12: "images/dress_halterties.jpg",
-  p13: "images/dress_halter.jpg",
-  p14: "images/dress_lacestrap.jpg"
+  p13: "images/hijab_girl1.jpg",
+  p14: "images/hijab_girl2.jpg"
 };
 
 ROSEDRESS.CATEGORIES = [
