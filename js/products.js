@@ -5,17 +5,17 @@ var PX = "https://images.pexels.com/photos/";
 ROSEDRESS.PROD_IMG = "images/dress_bandeau.jpg";
 
 ROSEDRESS.IMG_BY_CAT = {
-  "new-arrivals":  "images/dress_highneck.jpg",
-  "dresses":       "images/dress_bandeau.jpg",
-  "evening":       "images/dress_rhinestones.jpg",
-  "modest":        "images/dress_mockneck.jpg",
+  "new-arrivals":  "images/cat_new.jpg",
+  "dresses":       "images/cat_dresses.jpg",
+  "evening":       "images/cat_evening.jpg",
+  "modest":        "images/cat_modest.jpg",
   "accessories":   "images/bag_shoulder.jpg",
   "fragrance":     PX + "264819/pexels-photo-264819.jpeg?auto=compress&cs=tinysrgb&w=900"
 };
 
 ROSEDRESS.IMG = {
   p1:  "images/dress_mockneck.jpg",
-  p2:  "images/dress_rhinestones.jpg",
+  p2:  "images/dress_selene_maxi.jpg",
   p3:  "images/dress_highneck.jpg",
   p4:  "images/dress_bandeau.jpg",
   p5:  "images/dress_lacestrap.jpg",
