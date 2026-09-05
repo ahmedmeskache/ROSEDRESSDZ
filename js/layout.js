@@ -15,7 +15,7 @@ window.ROSEDRESS = window.ROSEDRESS || {};
     var nav = document.querySelector('header#site-header') || document.createElement('header');
     nav.id = 'site-header';
     nav.className = 'fixed top-0 w-full z-50 nav-fixed h-24 flex items-center justify-between px-6 md:px-16';
-    nav.style.cssText = 'background:rgba(251,247,239,.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(156,139,119,.25);';
+    nav.style.cssText = 'background:transparent;';
 
     var center = PAGES[0];
     var left = PAGES.slice(1,4);

@@ -44,7 +44,6 @@ h1,h2,h3,h4,.font-serif{ font-family:'Playfair Display',serif; }
 }
 .nav-link:hover::after{ width:100%; }
 .nav-fixed{ transition:box-shadow .4s ease, background .4s ease; }
-.nav-fixed.scrolled{ box-shadow:0 10px 30px -18px rgba(31,29,28,.4); }
 #mobileMenu{ transition:opacity .3s ease, visibility .3s ease; }
 
 .product-card{ transition:transform .5s cubic-bezier(.2,.7,.3,1), box-shadow .5s ease; will-change:transform; }
