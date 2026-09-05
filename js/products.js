@@ -7,6 +7,8 @@ ROSEDRESS.PROD_IMG = "images/dress_bandeau.jpg";
 ROSEDRESS.IMG_BY_CAT = {
   "new-arrivals":  "images/cat_new.jpg",
   "dresses":       "images/cat_dresses.jpg",
+  "jackets":       "images/jacket_1.jpg",
+  "tshirts":       "images/tshirt_1.jpg",
   "evening":       "images/cat_evening.jpg",
   "modest":        "images/cat_modest.jpg",
   "hijab":         "images/hijab_girl4.jpg",
@@ -28,12 +30,23 @@ ROSEDRESS.IMG = {
   p11: PX + "14238877/pexels-photo-14238877.jpeg?auto=compress&cs=tinysrgb&w=900",
   p12: "images/dress_halterties.jpg",
   p13: "images/hijab_girl1.jpg",
-  p14: "images/hijab_girl2.jpg"
+  p14: "images/hijab_girl2.jpg",
+  p15: "images/dress_1.jpg",
+  p16: "images/dress_2.jpg",
+  p17: "images/dress_3.jpg",
+  p18: "images/dress_4.jpg",
+  p19: "images/dress_5.jpg",
+  p20: "images/dress_6.jpg",
+  p21: "images/dress_7.jpg",
+  p22: "images/jacket_1.jpg",
+  p23: "images/tshirt_1.jpg"
 };
 
 ROSEDRESS.CATEGORIES = [
   {id:"new-arrivals", name:"New Arrivals", tag:"New"},
   {id:"dresses",      name:"Dresses"},
+  {id:"jackets",      name:"Jackets"},
+  {id:"tshirts",      name:"T-Shirts"},
   {id:"evening",      name:"Evening Collection"},
   {id:"modest",       name:"Modest Collection"},
   {id:"hijab",        name:"Hijab"},
@@ -55,7 +68,16 @@ ROSEDRESS.PRODUCTS = [
   {id:"p11", name:"Amber Rose Eau",     cat:"fragrance",   price:4600,  tag:"new", img:"fragrance"},
   {id:"p12", name:"Nadia Embroidered Gown", cat:"evening", price:17900, tag:"",   img:"evening"},
   {id:"p13", name:"Nadia Silk Hijab",        cat:"hijab",   price:3000,  tag:"new", img:"hijab"},
-  {id:"p14", name:"Sofia Everyday Hijab",    cat:"hijab",   price:2600,  tag:"",   img:"hijab"}
+  {id:"p14", name:"Sofia Everyday Hijab",    cat:"hijab",   price:2600,  tag:"",   img:"hijab"},
+  {id:"p15", name:"Leila Midi Dress",        cat:"dresses", price:7500,  tag:"new", img:"dresses"},
+  {id:"p16", name:"Sana Wrap Dress",         cat:"dresses", price:6900,  tag:"",   img:"dresses"},
+  {id:"p17", name:"Hana Linen Dress",        cat:"dresses", price:7200,  tag:"",   img:"dresses"},
+  {id:"p18", name:"Zina Floral Dress",       cat:"dresses", price:6700,  tag:"new", img:"dresses"},
+  {id:"p19", name:"Mira Jersey Dress",       cat:"dresses", price:6200,  tag:"",   img:"dresses"},
+  {id:"p20", name:"Dalia Shift Dress",       cat:"dresses", price:6600,  tag:"",   img:"dresses"},
+  {id:"p21", name:"Rim Pleated Dress",       cat:"dresses", price:7100,  tag:"",   img:"dresses"},
+  {id:"p22", name:"Camille Wool Jacket",     cat:"jackets", price:9400,  tag:"new", img:"jackets"},
+  {id:"p23", name:"Rose Cotton Tee",         cat:"tshirts", price:2900,  tag:"new", img:"tshirts"}
 ];
 
 ROSEDRESS.getCat = function(id){ return ROSEDRESS.CATEGORIES.find(function(c){return c.id===id;}); };
