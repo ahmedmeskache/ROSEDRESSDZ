@@ -9,9 +9,10 @@
 html{ scroll-behavior:smooth; }
 body{
   background:
-    radial-gradient(80% 60% at 12% 0%, rgba(214,162,74,.14) 0%, transparent 55%),
-    radial-gradient(70% 55% at 90% 8%, rgba(183,161,132,.18) 0%, transparent 55%),
-    linear-gradient(165deg,#fbf7ef 0%, #f3ece0 50%, #efe3d0 100%);
+    radial-gradient(110% 60% at 50% 0%, rgba(255,253,249,.9) 0%, rgba(251,247,239,1) 55%, transparent 100%),
+    radial-gradient(140% 90% at 12% 0%, rgba(214,162,74,.09) 0%, transparent 55%),
+    radial-gradient(120% 80% at 90% 10%, rgba(183,161,132,.1) 0%, transparent 55%),
+    linear-gradient(180deg,#fdfaf4 0%, #fbf7ef 45%, #f6efe2 100%);
   color:var(--dark);
   font-family:'Plus Jakarta Sans',sans-serif; font-weight:300;
 }
