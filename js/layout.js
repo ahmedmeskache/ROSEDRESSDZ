@@ -45,7 +45,7 @@ window.ROSEDRESS = window.ROSEDRESS || {};
           '<iconify-icon icon="lucide:shopping-bag"></iconify-icon>'+
           '<span class="cart-count absolute -top-1 -right-2 text-[10px] bg-[#c9a876] text-white w-4 h-4 rounded-full flex items-center justify-center">0</span>'+
         '</a>'+
-        '<button class="text-2xl lg:hidden" id="menuToggle" aria-label="Menu"><iconify-icon icon="lucide:menu"></iconify-icon></button>'+
+        '<button class="text-2xl lg:hidden relative z-[60]" id="menuToggle" aria-label="Menu"><iconify-icon icon="lucide:menu"></iconify-icon></button>'+
       '</div>'+
       '<div id="mobileMenu" class="mobile-menu fixed inset-0 z-40 bg-[#f6f2ec] flex flex-col items-center justify-center gap-8 opacity-0 invisible">'+
         PAGES.map(function(p){ return '<a href="'+p.href+'" class="text-2xl font-serif">'+p.label+'</a>'; }).join('')+
@@ -103,13 +103,19 @@ window.ROSEDRESS = window.ROSEDRESS || {};
     var menu = document.getElementById('mobileMenu');
     if(toggle && menu){
       var open = false;
-      toggle.addEventListener('click', function(){
-        open = !open;
+      function setMenuState(){
         menu.classList.toggle('opacity-0', !open);
         menu.classList.toggle('invisible', !open);
+        var ic = toggle.querySelector('iconify-icon');
+        if(ic){ ic.setAttribute('icon', open ? 'lucide:x' : 'lucide:menu'); }
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+      toggle.addEventListener('click', function(){
+        open = !open;
+        setMenuState();
       });
       menu.querySelectorAll('a').forEach(function(a){
-        a.addEventListener('click', function(){ open=false; menu.classList.add('opacity-0','invisible'); });
+        a.addEventListener('click', function(){ open = false; setMenuState(); });
       });
     }
     // nav shadow
